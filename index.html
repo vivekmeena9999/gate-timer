@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE 2026 Countdown</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F2E8DC;
+            color: #333333;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Subtle background pattern - intersecting lines */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(200, 180, 160, 0.15) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 180, 160, 0.15) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        /* Subtle clock-face pattern */
+        .clock-pattern {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            border: 1px solid rgba(180, 160, 140, 0.1);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .clock-pattern::before,
+        .clock-pattern::after {
+            content: '';
+            position: absolute;
+            background: rgba(180, 160, 140, 0.1);
+        }
+        
+        .clock-pattern::before {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 2px;
+            height: 80%;
+        }
+        
+        .clock-pattern::after {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(90deg);
+            width: 2px;
+            height: 80%;
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #333333;
+            letter-spacing: -0.02em;
+        }
+        
+        .timer-card {
+            background-color: #FAF3E0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .timer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+        
+        .timer-number {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #333333;
+            letter-spacing: -0.03em;
+        }
+        
+        .timer-label {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #666666;
+            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+        }
+        
+        .progress-container {
+            background-color: #FAF3E0;
+            border-radius: 9999px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) inset;
+        }
+        
+        .progress-bar {
+            background-color: #D4A574;
+            border-radius: 9999px;
+            transition: width 0.5s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.85;
+            }
+        }
+        
+        .toggle-button {
+            background-color: #FAF3E0;
+            color: #333333;
+            border: 1px solid rgba(51, 51, 51, 0.2);
+            border-radius: 6px;
+            padding: 0.625rem 1.5rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        
+        .toggle-button:hover {
+            background-color: #F5EDD9;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            transform: translateY(-1px);
+        }
+        
+        .timer-container {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        .timer-container.hidden {
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+        
+        .weekends-view {
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            pointer-events: none;
+        }
+        
+        .weekends-view.visible {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        
+        .weekends-card {
+            background-color: #FAF3E0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .weekends-number {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #333333;
+            letter-spacing: -0.03em;
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+        
+        .weekends-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            color: #666666;
+            font-size: 1.125rem;
+            margin-top: 0.5rem;
+        }
+        
+        footer {
+            color: #999999;
+            font-size: 0.875rem;
+            font-weight: 300;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .clock-pattern {
+                width: 400px;
+                height: 400px;
+            }
+            
+            body::before {
+                background-size: 40px 40px;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .timer-card {
+                padding: 1.5rem 1rem !important;
+            }
+            
+            .timer-number {
+                font-size: 2rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Subtle background patterns -->
+    <div class="clock-pattern"></div>
+    
+    <div class="container min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-16">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-20 md:mb-24">
+            <h1 class="title text-5xl md:text-7xl lg:text-8xl">GATE 2026</h1>
+        </div>
+        
+        <!-- Timer Section -->
+        <div class="w-full max-w-5xl mb-8 md:mb-10">
+            <div class="timer-container" id="timerContainer">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                    <!-- Days Card -->
+                    <div class="timer-card p-6 md:p-8 text-center">
+                        <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="days">000</div>
+                        <div class="timer-label">DAYS</div>
+                    </div>
+                    
+                    <!-- Hours Card -->
+                    <div class="timer-card p-6 md:p-8 text-center">
+                        <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="hours">00</div>
+                        <div class="timer-label">HOURS</div>
+                    </div>
+                    
+                    <!-- Minutes Card -->
+                    <div class="timer-card p-6 md:p-8 text-center">
+                        <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="minutes">00</div>
+                        <div class="timer-label">MINUTES</div>
+                    </div>
+                    
+                    <!-- Seconds Card -->
+                    <div class="timer-card p-6 md:p-8 text-center">
+                        <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="seconds">00</div>
+                        <div class="timer-label">SECONDS</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Weekends View -->
+            <div class="weekends-view" id="weekendsView">
+                <div class="weekends-card max-w-md mx-auto">
+                    <div class="weekends-number" id="weekendsCount">0</div>
+                    <div class="weekends-text">Only <span id="weekendsText">0</span> Weekends Left</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Toggle Button -->
+        <div class="text-center mb-16 md:mb-20">
+            <button class="toggle-button" id="toggleButton">Switch to Weekends View</button>
+        </div>
+        
+        <!-- Progress Bar Section -->
+        <div class="w-full max-w-3xl mb-16 md:mb-20">
+            <div class="text-center mb-6">
+                <h2 class="text-lg md:text-xl font-medium text-[#555555] mb-4">Preparation Progress</h2>
+                <div class="flex justify-between text-xs md:text-sm text-[#777777] mb-3">
+                    <span>Time Elapsed</span>
+                    <span>Time Left</span>
+                </div>
+            </div>
+            <div class="progress-container h-1.5 mb-2">
+                <div class="progress-bar h-full" id="progressBar"></div>
+            </div>
+            <div class="flex justify-between text-xs text-[#888888]">
+                <span id="elapsedTime">0 days</span>
+                <span id="remainingTime">0 days</span>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="mt-auto pt-8 text-center">
+            <p>Built by a Fellow Gate Aspirant</p>
+        </footer>
+        
+    </div>
+    
+    <script>
+        // Target date: February 7, 2026, 09:00:00 IST
+        const targetDate = new Date('2026-02-07T09:00:00+05:30');
+        
+        // Start date: August 1, 2025 (approximate start of prep)
+        const startDate = new Date('2025-08-01T00:00:00+05:30');
+        
+        let isWeekendsView = false;
+        
+        function updateTimer() {
+            const now = new Date();
+            const timeDifference = targetDate - now;
+            
+            if (timeDifference <= 0) {
+                // Countdown is over
+                document.getElementById('days').textContent = '0';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            // Calculate time units
+            const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+            
+            // Update display - no leading zeros for days, keep for hours/min/sec
+            document.getElementById('days').textContent = String(days);
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+        
+        function calculateWeekendsRemaining() {
+            const now = new Date();
+            const target = new Date('2026-02-07T09:00:00+05:30');
+            
+            // Start from today (midnight)
+            let currentDate = new Date(now);
+            currentDate.setHours(0, 0, 0, 0);
+            
+            // Set target to midnight for comparison
+            let targetDate = new Date(target);
+            targetDate.setHours(0, 0, 0, 0);
+            
+            // If target is before now, return 0
+            if (targetDate < currentDate) {
+                return 0;
+            }
+            
+            let saturdaysCount = 0;
+            
+            // Find the first Saturday (today if it's Saturday, otherwise next Saturday)
+            const currentDay = currentDate.getDay(); // 0 = Sunday, 6 = Saturday
+            
+            if (currentDay === 6) {
+                // Today is Saturday, count it
+                saturdaysCount++;
+                // Move to next Saturday
+                currentDate.setDate(currentDate.getDate() + 7);
+            } else {
+                // Find next Saturday
+                const daysUntilSaturday = (6 - currentDay + 7) % 7;
+                currentDate.setDate(currentDate.getDate() + daysUntilSaturday);
+            }
+            
+            // Count all remaining Saturdays until target date
+            while (currentDate <= targetDate) {
+                saturdaysCount++;
+                currentDate.setDate(currentDate.getDate() + 7);
+            }
+            
+            return Math.max(0, saturdaysCount);
+        }
+        
+        function updateWeekendsView() {
+            const weekends = calculateWeekendsRemaining();
+            document.getElementById('weekendsCount').textContent = weekends;
+            document.getElementById('weekendsText').textContent = weekends;
+        }
+        
+        function updateProgressBar() {
+            const now = new Date();
+            const totalDuration = targetDate - startDate;
+            const elapsed = now - startDate;
+            
+            if (elapsed < 0) {
+                // Before start date
+                document.getElementById('progressBar').style.width = '0%';
+                document.getElementById('elapsedTime').textContent = 'Not started';
+                document.getElementById('remainingTime').textContent = formatDays(Math.ceil(totalDuration / (1000 * 60 * 60 * 24)));
+                return;
+            }
+            
+            if (elapsed >= totalDuration) {
+                // After target date
+                document.getElementById('progressBar').style.width = '100%';
+                document.getElementById('elapsedTime').textContent = formatDays(Math.floor(totalDuration / (1000 * 60 * 60 * 24)));
+                document.getElementById('remainingTime').textContent = '0 days';
+                return;
+            }
+            
+            // Calculate progress percentage
+            const progressPercentage = (elapsed / totalDuration) * 100;
+            document.getElementById('progressBar').style.width = progressPercentage + '%';
+            
+            // Update time labels
+            const elapsedDays = Math.floor(elapsed / (1000 * 60 * 60 * 24));
+            const remainingDays = Math.ceil((totalDuration - elapsed) / (1000 * 60 * 60 * 24));
+            
+            document.getElementById('elapsedTime').textContent = formatDays(elapsedDays);
+            document.getElementById('remainingTime').textContent = formatDays(remainingDays);
+        }
+        
+        function formatDays(days) {
+            if (days === 1) return '1 day';
+            return days + ' days';
+        }
+        
+        function toggleView() {
+            isWeekendsView = !isWeekendsView;
+            const timerContainer = document.getElementById('timerContainer');
+            const weekendsView = document.getElementById('weekendsView');
+            const toggleButton = document.getElementById('toggleButton');
+            
+            if (isWeekendsView) {
+                timerContainer.classList.add('hidden');
+                weekendsView.classList.add('visible');
+                toggleButton.textContent = 'Switch to Full Countdown';
+            } else {
+                timerContainer.classList.remove('hidden');
+                weekendsView.classList.remove('visible');
+                toggleButton.textContent = 'Switch to Weekends View';
+            }
+        }
+        
+        // Initialize toggle button
+        document.getElementById('toggleButton').addEventListener('click', toggleView);
+        
+        // Update timer and progress bar immediately
+        updateTimer();
+        updateProgressBar();
+        updateWeekendsView();
+        
+        // Update every second
+        setInterval(() => {
+            updateTimer();
+            updateProgressBar();
+            if (isWeekendsView) {
+                updateWeekendsView();
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
