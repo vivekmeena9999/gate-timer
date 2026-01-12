@@ -218,6 +218,136 @@
             font-weight: 300;
         }
         
+        .schedule-section {
+            background-color: #FAF3E0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .schedule-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #333333;
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #FAF3E0;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+        }
+        
+        .schedule-table thead {
+            background-color: #E8DCC8;
+        }
+        
+        .schedule-table th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            color: #333333;
+            border-bottom: 2px solid rgba(51, 51, 51, 0.15);
+            font-size: 0.875rem;
+        }
+        
+        .schedule-table td {
+            padding: 0.875rem 1rem;
+            color: #333333;
+            border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        .schedule-table tbody tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .schedule-table tbody tr:nth-child(odd) {
+            background-color: #FAF3E0;
+        }
+        
+        .schedule-table tbody tr:hover {
+            background-color: rgba(212, 165, 116, 0.1);
+        }
+        
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .faq-section {
+            background-color: #FAF3E0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #333333;
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .faq-item summary {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #333333;
+            padding: 1rem 0;
+            cursor: pointer;
+            list-style: none;
+            font-size: 1rem;
+            position: relative;
+            padding-right: 2rem;
+        }
+        
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-item summary::after {
+            content: '+';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #666666;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item[open] summary::after {
+            content: '−';
+            transform: translateY(-50%) rotate(0deg);
+        }
+        
+        .faq-item summary:hover {
+            color: #555555;
+        }
+        
+        .faq-answer {
+            font-family: 'Inter', sans-serif;
+            color: #555555;
+            padding: 0 0 1rem 0;
+            line-height: 1.6;
+            font-size: 0.9375rem;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .clock-pattern {
@@ -237,6 +367,39 @@
             
             .timer-number {
                 font-size: 2rem !important;
+            }
+            
+            .schedule-section {
+                padding: 1.5rem 1rem;
+            }
+            
+            .schedule-heading {
+                font-size: 1.5rem;
+            }
+            
+            .schedule-table {
+                font-size: 0.75rem;
+            }
+            
+            .schedule-table th,
+            .schedule-table td {
+                padding: 0.625rem 0.75rem;
+            }
+            
+            .faq-section {
+                padding: 1.5rem 1rem;
+            }
+            
+            .faq-heading {
+                font-size: 1.5rem;
+            }
+            
+            .faq-item summary {
+                font-size: 0.9375rem;
+            }
+            
+            .faq-answer {
+                font-size: 0.875rem;
             }
         }
     </style>
@@ -311,6 +474,93 @@
             <div class="flex justify-between text-xs text-[#888888]">
                 <span id="elapsedTime">0 days</span>
                 <span id="remainingTime">0 days</span>
+            </div>
+        </div>
+        
+        <!-- Schedule Section -->
+        <div class="w-full max-w-6xl mb-16 md:mb-20">
+            <div class="schedule-section">
+                <h2 class="schedule-heading">Official GATE 2026 Exam Schedule</h2>
+                <div class="table-wrapper">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Day, Date</th>
+                                <th>Time (IST)</th>
+                                <th>Test Papers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Saturday, Feb 07, 2026</td>
+                                <td>9:30 am - 12:30 pm (FN)</td>
+                                <td>AG, ES, GG, IN, MA, MN, TF, XE, XL</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>2:30 pm - 5:30 pm (AN)</td>
+                                <td>AE, BT, CH, CY, GE, PH, XH</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday, Feb 08, 2026</td>
+                                <td>9:30 am - 12:30 pm (FN)</td>
+                                <td>CS-1, ST</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>2:30 pm - 5:30 pm (AN)</td>
+                                <td>CS-2, EY, NM, PE</td>
+                            </tr>
+                            <tr>
+                                <td>Saturday, Feb 14, 2026</td>
+                                <td>9:30 am - 12:30 pm (FN)</td>
+                                <td>CE-1, EE, PI</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>2:30 pm - 5:30 pm (AN)</td>
+                                <td>BM, CE-2, ME, MT</td>
+                            </tr>
+                            <tr>
+                                <td>Sunday, Feb 15, 2026</td>
+                                <td>9:30 am - 12:30 pm (FN)</td>
+                                <td>EC</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>2:30 pm - 5:30 pm (AN)</td>
+                                <td>AR, DA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- FAQ Section -->
+        <div class="w-full max-w-4xl mb-16 md:mb-20">
+            <div class="faq-section">
+                <h2 class="faq-heading">Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>When is the GATE 2026 Exam Date?</summary>
+                        <div class="faq-answer">
+                            The official dates are February 7, 8, 14, and 15, 2026.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>When will the GATE 2026 Admit Card be released?</summary>
+                        <div class="faq-answer">
+                            The admit card is expected to be released in the first week of January 2026.
+                        </div>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What is the official website for GATE 2026?</summary>
+                        <div class="faq-answer">
+                            The official website is gate2026.iitg.ac.in.
+                        </div>
+                    </details>
+                </div>
             </div>
         </div>
         
