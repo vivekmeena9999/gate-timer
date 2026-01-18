@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GATE 2026 Countdown</title>
+    <title>Days Left for GATE 2026 | Live Countdown & Exam Date</title>
+    <meta name="description" content="Track exactly how many days, weeks, and hours are left for GATE 2026. Live countdown to February 7, 2026, with official IIT Guwahati schedule and exam statistics.">
+    <meta name="keywords" content="GATE 2026, GATE Countdown, Days left for GATE, GATE Exam Date, IIT Guwahati, GATE 2026 Timer">
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='white'/><text x='50' y='65' font-family='sans-serif' font-size='45' font-weight='bold' fill='black' text-anchor='middle'>26</text></svg>">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,8 +15,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -22,117 +27,63 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F2E8DC;
-            color: #333333;
+            background-color: #09090b;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
         
-        /* Subtle background pattern - intersecting lines */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(200, 180, 160, 0.15) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(200, 180, 160, 0.15) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        /* Subtle clock-face pattern */
-        .clock-pattern {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            border: 1px solid rgba(180, 160, 140, 0.1);
-            pointer-events: none;
-            z-index: 0;
-        }
-        
-        .clock-pattern::before,
-        .clock-pattern::after {
-            content: '';
-            position: absolute;
-            background: rgba(180, 160, 140, 0.1);
-        }
-        
-        .clock-pattern::before {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 2px;
-            height: 80%;
-        }
-        
-        .clock-pattern::after {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(90deg);
-            width: 2px;
-            height: 80%;
-        }
-        
-        .container {
-            position: relative;
-            z-index: 1;
-        }
-        
         .title {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #333333;
-            letter-spacing: -0.02em;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: -0.04em;
         }
         
         .timer-card {
-            background-color: #FAF3E0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: none;
+            transition: transform 0.2s ease;
+            padding: 2rem 1.5rem;
         }
         
         .timer-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
         
         .timer-number {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            color: #333333;
             letter-spacing: -0.03em;
+            color: #ffffff;
         }
         
         .timer-label {
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            color: #666666;
+            color: #9ca3af;
             letter-spacing: 0.1em;
             font-size: 0.75rem;
         }
         
         .progress-container {
-            background-color: #FAF3E0;
+            background-color: rgba(255, 255, 255, 0.1);
             border-radius: 9999px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06) inset;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
         }
         
         .progress-bar {
-            background-color: #D4A574;
+            background-color: #ffffff;
             border-radius: 9999px;
             transition: width 0.5s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            animation: pulse 2s ease-in-out infinite;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
         }
         
         @keyframes pulse {
@@ -145,9 +96,9 @@
         }
         
         .toggle-button {
-            background-color: #FAF3E0;
-            color: #333333;
-            border: 1px solid rgba(51, 51, 51, 0.2);
+            background-color: transparent;
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 6px;
             padding: 0.625rem 1.5rem;
             font-family: 'Inter', sans-serif;
@@ -155,12 +106,12 @@
             font-size: 0.875rem;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            box-shadow: none;
         }
         
         .toggle-button:hover {
-            background-color: #F5EDD9;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-1px);
         }
         
@@ -188,9 +139,10 @@
         }
         
         .weekends-card {
-            background-color: #FAF3E0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            background-color: #111111;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: none;
             padding: 3rem 2rem;
             text-align: center;
         }
@@ -198,7 +150,7 @@
         .weekends-number {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            color: #333333;
+            color: #ffffff;
             letter-spacing: -0.03em;
             font-size: 3rem;
             line-height: 1.2;
@@ -207,28 +159,29 @@
         .weekends-text {
             font-family: 'Inter', sans-serif;
             font-weight: 500;
-            color: #666666;
+            color: #9ca3af;
             font-size: 1.125rem;
             margin-top: 0.5rem;
         }
         
         footer {
-            color: #999999;
+            color: #9ca3af;
             font-size: 0.875rem;
             font-weight: 300;
         }
         
         .schedule-section {
-            background-color: #FAF3E0;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: none;
         }
         
         .schedule-heading {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            color: #333333;
+            color: #ffffff;
             font-size: 1.875rem;
             margin-bottom: 1.5rem;
             text-align: center;
@@ -237,40 +190,40 @@
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            background-color: #FAF3E0;
+            background-color: transparent;
             font-family: 'Inter', sans-serif;
             font-size: 0.875rem;
         }
         
         .schedule-table thead {
-            background-color: #E8DCC8;
+            background-color: transparent;
         }
         
         .schedule-table th {
             padding: 0.875rem 1rem;
             text-align: left;
             font-weight: 600;
-            color: #333333;
-            border-bottom: 2px solid rgba(51, 51, 51, 0.15);
+            color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.875rem;
         }
         
         .schedule-table td {
             padding: 0.875rem 1rem;
-            color: #333333;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+            color: #e5e7eb;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .schedule-table tbody tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.02);
         }
         
         .schedule-table tbody tr:nth-child(odd) {
-            background-color: #FAF3E0;
+            background-color: transparent;
         }
         
         .schedule-table tbody tr:hover {
-            background-color: rgba(212, 165, 116, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
         }
         
         .table-wrapper {
@@ -279,16 +232,17 @@
         }
         
         .faq-section {
-            background-color: #FAF3E0;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 8px;
             padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            box-shadow: none;
         }
         
         .faq-heading {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Inter', sans-serif;
             font-weight: 700;
-            color: #333333;
+            color: #ffffff;
             font-size: 1.875rem;
             margin-bottom: 1.5rem;
             text-align: center;
@@ -296,7 +250,7 @@
         
         .faq-item {
             margin-bottom: 1rem;
-            border-bottom: 1px solid rgba(51, 51, 51, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .faq-item:last-child {
@@ -307,7 +261,7 @@
         .faq-item summary {
             font-family: 'Inter', sans-serif;
             font-weight: 600;
-            color: #333333;
+            color: #ffffff;
             padding: 1rem 0;
             cursor: pointer;
             list-style: none;
@@ -327,7 +281,7 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.5rem;
-            color: #666666;
+            color: #9ca3af;
             transition: transform 0.3s ease;
         }
         
@@ -337,15 +291,24 @@
         }
         
         .faq-item summary:hover {
-            color: #555555;
+            color: #e5e7eb;
         }
         
         .faq-answer {
             font-family: 'Inter', sans-serif;
-            color: #555555;
+            color: #e5e7eb;
             padding: 0 0 1rem 0;
             line-height: 1.6;
             font-size: 0.9375rem;
+        }
+        
+        .faq-answer a {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+        
+        .faq-answer a:hover {
+            color: #e5e7eb;
         }
         
         /* Responsive adjustments */
@@ -353,10 +316,6 @@
             .clock-pattern {
                 width: 400px;
                 height: 400px;
-            }
-            
-            body::before {
-                background-size: 40px 40px;
             }
         }
         
@@ -405,14 +364,29 @@
     </style>
 </head>
 <body>
-    <!-- Subtle background patterns -->
-    <div class="clock-pattern"></div>
-    
     <div class="container min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-16">
         
         <!-- Hero Section -->
-        <div class="text-center mb-20 md:mb-24">
-            <h1 class="title text-5xl md:text-7xl lg:text-8xl">GATE 2026</h1>
+        <div class="text-center mb-12">
+    
+            <h1 class="text-6xl md:text-8xl font-['Roboto_Mono'] font-bold text-white mb-4 tracking-tighter">
+                GATE 2026
+            </h1>
+        
+            <div class="text-gray-400 font-['Roboto_Mono'] text-sm md:text-base font-medium mb-6">
+                Sat, 07 Feb 2026 at 09:30 • IST
+            </div>
+        
+            <div class="flex flex-wrap justify-center gap-3 items-center">
+                <div class="px-4 py-1.5 rounded-full bg-white/10 border border-white/5 backdrop-blur-sm">
+                    <span class="text-gray-400 text-xs uppercase tracking-wide">Organizing Institute: IIT Guwahati</span>
+                </div>
+                <a href="https://gate2026.iitg.ac.in/" target="_blank" class="px-4 py-1.5 rounded-full bg-white/10 border border-white/5 hover:bg-white/20 transition-all cursor-pointer group flex items-center gap-2">
+                    <span class="text-gray-300 text-xs">Official website</span>
+                    <span class="text-gray-400 text-xs group-hover:translate-x-0.5 transition-transform">→</span>
+                </a>
+            </div>
+        
         </div>
         
         <!-- Timer Section -->
@@ -420,28 +394,35 @@
             <div class="timer-container" id="timerContainer">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
                     <!-- Days Card -->
-                    <div class="timer-card p-6 md:p-8 text-center">
+                    <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="days">000</div>
                         <div class="timer-label">DAYS</div>
                     </div>
                     
                     <!-- Hours Card -->
-                    <div class="timer-card p-6 md:p-8 text-center">
+                    <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="hours">00</div>
                         <div class="timer-label">HOURS</div>
                     </div>
                     
                     <!-- Minutes Card -->
-                    <div class="timer-card p-6 md:p-8 text-center">
+                    <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="minutes">00</div>
                         <div class="timer-label">MINUTES</div>
                     </div>
                     
                     <!-- Seconds Card -->
-                    <div class="timer-card p-6 md:p-8 text-center">
+                    <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="seconds">00</div>
                         <div class="timer-label">SECONDS</div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Daily Quote Box -->
+            <div class="w-full max-w-5xl mt-8 md:mt-10 mb-8 md:mb-10">
+                <div class="bg-white/5 border border-white/10 rounded-xl p-4 md:p-6 text-center">
+                    <p class="text-white text-sm md:text-base" id="dailyQuote">Loading quote...</p>
                 </div>
             </div>
             
@@ -461,9 +442,9 @@
         
         <!-- Progress Bar Section -->
         <div class="w-full max-w-3xl mb-16 md:mb-20">
-            <div class="text-center mb-6">
-                <h2 class="text-lg md:text-xl font-medium text-[#555555] mb-4">Preparation Progress</h2>
-                <div class="flex justify-between text-xs md:text-sm text-[#777777] mb-3">
+                <div class="text-center mb-6">
+                <h2 class="text-lg md:text-xl font-medium text-white mb-4">Preparation Progress</h2>
+                <div class="flex justify-between text-xs md:text-sm text-gray-300 mb-3">
                     <span>Time Elapsed</span>
                     <span>Time Left</span>
                 </div>
@@ -471,7 +452,7 @@
             <div class="progress-container h-1.5 mb-2">
                 <div class="progress-bar h-full" id="progressBar"></div>
             </div>
-            <div class="flex justify-between text-xs text-[#888888]">
+            <div class="flex justify-between text-xs text-gray-400">
                 <span id="elapsedTime">0 days</span>
                 <span id="remainingTime">0 days</span>
             </div>
@@ -564,11 +545,41 @@
                 </div>
             </div>
         </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 mt-10 mb-12 border-t border-white/10 pt-8">
+    
+            <h3 class="text-white/60 text-sm font-medium uppercase tracking-wider mb-6 text-center">GATE 2026 Exam Details</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
+                    <div class="text-gray-400 text-xs uppercase mb-1">Conducting Institute</div>
+                    <div class="text-white font-semibold">IIT Guwahati</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
+                    <div class="text-gray-400 text-xs uppercase mb-1">Official Date</div>
+                    <div class="text-white font-semibold">Feb 7, 2026</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
+                    <div class="text-gray-400 text-xs uppercase mb-1">Duration</div>
+                    <div class="text-white font-semibold">3 Hours (CBT)</div>
+                </div>
+                <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
+                    <div class="text-gray-400 text-xs uppercase mb-1">Total Marks</div>
+                    <div class="text-white font-semibold">100 Marks</div>
+                </div>
+            </div>
         
+            <div class="text-gray-500 text-sm text-center leading-relaxed max-w-2xl mx-auto">
+                <p>
+                    <strong>How many days are left for GATE 2026?</strong> <br> This live timer tracks the exact duration until the first exam paper on February 7, 2026. 
+                    Unlike general calendars, we calculate the precise <strong>days, hours, minutes, and seconds remaining</strong>. 
+                    Whether you are counting the <strong>weeks left</strong> for revision or checking the official IIT Guwahati schedule, use this tracker to stay focused.
+                </p>
+            </div>
+        </div>
         <!-- Footer -->
         <footer class="mt-auto pt-8 text-center">
-            <p>Built by a Fellow Gate Aspirant</p>
-            <p class="mt-2 text-[0.7rem] text-[#aaaaaa]">
+            <p class="text-gray-300">Built by a Fellow Gate Aspirant</p>
+            <p class="mt-2 text-[0.7rem] text-gray-400">
                 © 2026 GateExamDate.com. All rights reserved. Not affiliated with IIT.
             </p>
         </footer>
@@ -583,6 +594,53 @@
         const startDate = new Date('2025-08-01T00:00:00+05:30');
         
         let isWeekendsView = false;
+        
+        // Daily Quote Engine
+        const motivationalQuotes = [
+            "Success is the sum of small efforts repeated day in and day out. Keep pushing forward!",
+            "The only way to do great work is to love what you do. Your dedication to GATE prep will pay off.",
+            "Discipline is choosing between what you want now and what you want most. Choose wisely.",
+            "Consistency beats intensity. Study a little every day, and you'll see remarkable progress.",
+            "The expert in anything was once a beginner. Every problem you solve makes you stronger.",
+            "Your future is created by what you do today, not tomorrow. Make today count!",
+            "The difference between ordinary and extraordinary is that little extra effort. Give it your all.",
+            "Don't watch the clock; do what it does. Keep going. Your time will come.",
+            "Hard work beats talent when talent doesn't work hard. Stay disciplined, stay focused.",
+            "The journey of a thousand miles begins with a single step. You've already started—keep going!",
+            "Success isn't just about the destination; it's about who you become on the journey. Grow every day.",
+            "Every expert was once a beginner. Every pro was once an amateur. Keep learning, keep improving.",
+            "The only impossible journey is the one you never begin. You've begun—now finish strong!",
+            "Your limitation—it's only your imagination. Push your boundaries and exceed your expectations.",
+            "Great things never come from comfort zones. Embrace the challenge of GATE preparation.",
+            "Dreams don't work unless you do. Put in the hours, and your dreams will become reality.",
+            "The way to get started is to quit talking and begin doing. Study now, succeed later.",
+            "Focus on progress, not perfection. Every small improvement brings you closer to your goal.",
+            "Champions aren't made in gyms. Champions are made from something deep inside them. Find that drive.",
+            "The only person you should try to be better than is the person you were yesterday. Keep improving!"
+        ];
+        
+        function getDailyQuote() {
+            const today = new Date();
+            const day = today.getDate();
+            const month = today.getMonth() + 1; // getMonth() returns 0-11
+            const year = today.getFullYear();
+            
+            // Create a unique seed from date (day + month + year)
+            const dateSeed = day + month + year;
+            
+            // Use modulo to select an index from the quotes array
+            const quoteIndex = dateSeed % motivationalQuotes.length;
+            
+            return motivationalQuotes[quoteIndex];
+        }
+        
+        // Display the daily quote
+        function displayDailyQuote() {
+            const quoteElement = document.getElementById('dailyQuote');
+            if (quoteElement) {
+                quoteElement.textContent = getDailyQuote();
+            }
+        }
         
         function updateTimer() {
             const now = new Date();
@@ -720,6 +778,7 @@
         updateTimer();
         updateProgressBar();
         updateWeekendsView();
+        displayDailyQuote();
         
         // Update every second
         setInterval(() => {
