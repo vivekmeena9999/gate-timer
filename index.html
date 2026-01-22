@@ -7,7 +7,11 @@
     <meta name="description" content="Track exactly how many days, weeks, and hours are left for GATE 2026. Live countdown to February 7, 2026, with official IIT Guwahati schedule and exam statistics.">
     <meta name="keywords" content="GATE 2026, GATE Countdown, Days left for GATE, GATE Exam Date, IIT Guwahati, GATE 2026 Timer">
     
+    <!-- Canonical Tag -->
+    <link rel="canonical" href="https://gateexamdate.com/" />
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='white'/><text x='50' y='65' font-family='sans-serif' font-size='45' font-weight='bold' fill='black' text-anchor='middle'>26</text></svg>">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -362,6 +366,28 @@
             }
         }
     </style>
+    
+    <!-- Event Schema (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationEvent",
+      "name": "GATE 2026 Exam",
+      "startDate": "2026-02-07T09:00",
+      "endDate": "2026-02-15T12:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "IIT Guwahati (Coordinating Institute)",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "IN"
+        }
+      },
+      "description": "Graduate Aptitude Test in Engineering (GATE) 2026 official countdown and schedule."
+    }
+    </script>
 </head>
 <body>
     <div class="container min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-16">
