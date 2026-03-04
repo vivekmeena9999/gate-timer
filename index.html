@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Days Left for GATE 2026 | Live Countdown & Exam Date</title>
-    <meta name="description" content="Track exactly how many days, weeks, and hours are left for GATE 2026. Live countdown to February 7, 2026, with official IIT Guwahati schedule and exam statistics.">
-    <meta name="keywords" content="GATE 2026, GATE Countdown, Days left for GATE, GATE Exam Date, IIT Guwahati, GATE 2026 Timer">
+    <title>Days Left for GATE 2027 | Live Countdown & Exam Date</title>
+    <meta name="description" content="Track exactly how many days, weeks, and hours are left for GATE 2027. Live countdown to February 6, 2027, with tentative schedule and exam statistics.">
+    <meta name="keywords" content="GATE 2027, GATE Countdown, Days left for GATE, GATE Exam Date, GATE 2027 Timer">
     
-    <!-- Canonical Tag -->
     <link rel="canonical" href="https://gateexamdate.com/" />
     
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='white'/><text x='50' y='65' font-family='sans-serif' font-size='45' font-weight='bold' fill='black' text-anchor='middle'>26</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='white'/><text x='50' y='65' font-family='sans-serif' font-size='45' font-weight='bold' fill='black' text-anchor='middle'>27</text></svg>">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -20,10 +19,8 @@
 
     <link rel="manifest" href="/site.webmanifest">
     
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -374,77 +371,69 @@
         }
     </style>
     
-    <!-- Event Schema (JSON-LD) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "EducationEvent",
-      "name": "GATE 2026 Exam",
-      "startDate": "2026-02-07T09:00",
-      "endDate": "2026-02-15T12:00",
+      "name": "GATE 2027 Exam",
+      "startDate": "2027-02-06T09:00",
+      "endDate": "2027-02-14T12:00",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "eventStatus": "https://schema.org/EventScheduled",
       "location": {
         "@type": "Place",
-        "name": "IIT Guwahati (Coordinating Institute)",
+        "name": "To Be Announced (Coordinating Institute)",
         "address": {
           "@type": "PostalAddress",
           "addressCountry": "IN"
         }
       },
-      "description": "Graduate Aptitude Test in Engineering (GATE) 2026 official countdown and schedule."
+      "description": "Graduate Aptitude Test in Engineering (GATE) 2027 official countdown and tentative schedule."
     }
     </script>
 </head>
 <body>
     <div class="container min-h-screen flex flex-col items-center justify-center px-4 py-12 md:py-16">
         
-        <!-- Hero Section -->
         <div class="text-center mb-12">
     
             <h1 class="text-6xl md:text-8xl font-['Roboto_Mono'] font-bold text-white mb-4 tracking-tighter">
-                GATE 2026
+                GATE 2027
             </h1>
         
             <div class="text-gray-400 font-['Roboto_Mono'] text-sm md:text-base font-medium mb-6">
-                Sat, 07 Feb 2026 at 09:30 • IST
+                Sat, 06 Feb 2027 at 09:30 • IST (Tentative)
             </div>
         
             <div class="flex flex-wrap justify-center gap-3 items-center">
                 <div class="px-4 py-1.5 rounded-full bg-white/10 border border-white/5 backdrop-blur-sm">
-                    <span class="text-gray-400 text-xs uppercase tracking-wide">Organizing Institute: IIT Guwahati</span>
+                    <span class="text-gray-400 text-xs uppercase tracking-wide">Organizing Institute: TBA</span>
                 </div>
-                <a href="https://gate2026.iitg.ac.in/" target="_blank" class="px-4 py-1.5 rounded-full bg-white/10 border border-white/5 hover:bg-white/20 transition-all cursor-pointer group flex items-center gap-2">
-                    <span class="text-gray-300 text-xs">Official website</span>
-                    <span class="text-gray-400 text-xs group-hover:translate-x-0.5 transition-transform">→</span>
+                <a href="#" class="px-4 py-1.5 rounded-full bg-white/10 border border-white/5 hover:bg-white/20 transition-all cursor-pointer group flex items-center gap-2">
+                    <span class="text-gray-300 text-xs">Official website (Coming Soon)</span>
                 </a>
             </div>
         
         </div>
         
-        <!-- Timer Section -->
         <div class="w-full max-w-5xl mb-8 md:mb-10">
             <div class="timer-container" id="timerContainer">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                    <!-- Days Card -->
                     <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="days">000</div>
                         <div class="timer-label">DAYS</div>
                     </div>
                     
-                    <!-- Hours Card -->
                     <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="hours">00</div>
                         <div class="timer-label">HOURS</div>
                     </div>
                     
-                    <!-- Minutes Card -->
                     <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="minutes">00</div>
                         <div class="timer-label">MINUTES</div>
                     </div>
                     
-                    <!-- Seconds Card -->
                     <div class="timer-card text-center">
                         <div class="timer-number text-4xl md:text-5xl lg:text-6xl mb-3" id="seconds">00</div>
                         <div class="timer-label">SECONDS</div>
@@ -452,14 +441,12 @@
                 </div>
             </div>
             
-            <!-- Daily Quote Box -->
             <div class="w-full max-w-5xl mt-8 md:mt-10 mb-8 md:mb-10">
                 <div class="bg-white/5 border border-white/10 rounded-xl p-4 md:p-6 text-center">
                     <p class="text-white text-sm md:text-base" id="dailyQuote">Loading quote...</p>
                 </div>
             </div>
             
-            <!-- Weekends View -->
             <div class="weekends-view" id="weekendsView">
                 <div class="weekends-card max-w-md mx-auto">
                     <div class="weekends-number" id="weekendsCount">0</div>
@@ -468,12 +455,10 @@
             </div>
         </div>
         
-        <!-- Toggle Button -->
         <div class="text-center mb-16 md:mb-20">
             <button class="toggle-button" id="toggleButton">Switch to Weekends View</button>
         </div>
         
-        <!-- Progress Bar Section -->
         <div class="w-full max-w-3xl mb-16 md:mb-20">
                 <div class="text-center mb-6">
                 <h2 class="text-lg md:text-xl font-medium text-white mb-4">Preparation Progress</h2>
@@ -491,10 +476,9 @@
             </div>
         </div>
         
-        <!-- Schedule Section -->
         <div class="w-full max-w-6xl mb-16 md:mb-20">
             <div class="schedule-section">
-                <h2 class="schedule-heading">Official GATE 2026 Exam Schedule</h2>
+                <h2 class="schedule-heading">Tentative GATE 2027 Exam Schedule</h2>
                 <div class="table-wrapper">
                     <table class="schedule-table">
                         <thead>
@@ -506,44 +490,44 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Saturday, Feb 07, 2026</td>
+                                <td>Saturday, Feb 06, 2027</td>
                                 <td>9:30 am - 12:30 pm (FN)</td>
-                                <td>AG, ES, GG, IN, MA, MN, TF, XE, XL</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>2:30 pm - 5:30 pm (AN)</td>
-                                <td>AE, BT, CH, CY, GE, PH, XH</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
-                                <td>Sunday, Feb 08, 2026</td>
+                                <td>Sunday, Feb 07, 2027</td>
                                 <td>9:30 am - 12:30 pm (FN)</td>
-                                <td>CS-1, ST</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>2:30 pm - 5:30 pm (AN)</td>
-                                <td>CS-2, EY, NM, PE</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
-                                <td>Saturday, Feb 14, 2026</td>
+                                <td>Saturday, Feb 13, 2027</td>
                                 <td>9:30 am - 12:30 pm (FN)</td>
-                                <td>CE-1, EE, PI</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>2:30 pm - 5:30 pm (AN)</td>
-                                <td>BM, CE-2, ME, MT</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
-                                <td>Sunday, Feb 15, 2026</td>
+                                <td>Sunday, Feb 14, 2027</td>
                                 <td>9:30 am - 12:30 pm (FN)</td>
-                                <td>EC</td>
+                                <td>To Be Announced</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>2:30 pm - 5:30 pm (AN)</td>
-                                <td>AR, DA</td>
+                                <td>To Be Announced</td>
                             </tr>
                         </tbody>
                     </table>
@@ -551,28 +535,26 @@
             </div>
         </div>
         
-        <!-- FAQ Section -->
         <div class="w-full max-w-4xl mb-16 md:mb-20">
             <div class="faq-section">
                 <h2 class="faq-heading">Frequently Asked Questions</h2>
                 <div class="faq-list">
                     <details class="faq-item">
-                        <summary>When is the GATE 2026 Exam Date?</summary>
+                        <summary>When is the GATE 2027 Exam Date?</summary>
                         <div class="faq-answer">
-                            The official dates are February 7, 8, 14, and 15, 2026.
+                            The official dates are tentatively scheduled for February 6, 7, 13, and 14, 2027.
                         </div>
                     </details>
                     <details class="faq-item">
-                        <summary>When will the GATE 2026 Admit Card be released?</summary>
+                        <summary>When will the GATE 2027 Admit Card be released?</summary>
                         <div class="faq-answer">
-                            Admit Cards were released on January 13, 2026. You can download yours from the
-                            <a href="https://goaps.iitg.ac.in" target="_blank" rel="noopener noreferrer">official GOAPS portal</a>.
+                            Admit Cards are typically released in the first week of January 2027. 
                         </div>
                     </details>
                     <details class="faq-item">
-                        <summary>What is the official website for GATE 2026?</summary>
+                        <summary>What is the official website for GATE 2027?</summary>
                         <div class="faq-answer">
-                            The official website is gate2026.iitg.ac.in.
+                            The official website will be launched by the organizing institute (TBA) around August 2026.
                         </div>
                     </details>
                 </div>
@@ -581,15 +563,15 @@
         </div>
         <div class="max-w-4xl mx-auto px-4 mt-10 mb-12 border-t border-white/10 pt-8">
     
-            <h3 class="text-white/60 text-sm font-medium uppercase tracking-wider mb-6 text-center">GATE 2026 Exam Details</h3>
+            <h3 class="text-white/60 text-sm font-medium uppercase tracking-wider mb-6 text-center">GATE 2027 Exam Details</h3>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
                     <div class="text-gray-400 text-xs uppercase mb-1">Conducting Institute</div>
-                    <div class="text-white font-semibold">IIT Guwahati</div>
+                    <div class="text-white font-semibold">TBA</div>
                 </div>
                 <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
-                    <div class="text-gray-400 text-xs uppercase mb-1">Official Date</div>
-                    <div class="text-white font-semibold">Feb 7, 2026</div>
+                    <div class="text-gray-400 text-xs uppercase mb-1">Tentative Date</div>
+                    <div class="text-white font-semibold">Feb 6, 2027</div>
                 </div>
                 <div class="bg-white/5 border border-white/10 rounded-lg p-4 text-center backdrop-blur-sm">
                     <div class="text-gray-400 text-xs uppercase mb-1">Duration</div>
@@ -603,28 +585,27 @@
         
             <div class="text-gray-500 text-sm text-center leading-relaxed max-w-2xl mx-auto">
                 <p>
-                    <strong>How many days are left for GATE 2026?</strong> <br> This live timer tracks the exact duration until the first exam paper on February 7, 2026. 
+                    <strong>How many days are left for GATE 2027?</strong> <br> This live timer tracks the exact duration until the highly anticipated first exam paper on February 6, 2027. 
                     Unlike general calendars, we calculate the precise <strong>days, hours, minutes, and seconds remaining</strong>. 
-                    Whether you are counting the <strong>weeks left</strong> for revision or checking the official IIT Guwahati schedule, use this tracker to stay focused.
+                    Whether you are counting the <strong>weeks left</strong> for revision or checking the schedule, use this tracker to stay focused.
                 </p>
             </div>
         </div>
-        <!-- Footer -->
         <footer class="mt-auto pt-8 text-center">
             <p class="text-gray-300">Built by a Fellow Gate Aspirant</p>
             <p class="mt-2 text-[0.7rem] text-gray-400">
-                © 2026 GateExamDate.com. All rights reserved. Not affiliated with IIT.
+                © 2027 GateExamDate.com. All rights reserved. Not affiliated with IIT.
             </p>
         </footer>
         
     </div>
     
     <script>
-        // Target date: February 7, 2026, 09:00:00 IST
-        const targetDate = new Date('2026-02-07T09:00:00+05:30');
+        // Target date: February 6, 2027, 09:00:00 IST (Tentative first day of exams)
+        const targetDate = new Date('2027-02-06T09:00:00+05:30');
         
-        // Start date: August 1, 2025 (approximate start of prep)
-        const startDate = new Date('2025-08-01T00:00:00+05:30');
+        // Start date: February 15, 2026 (Right after GATE 2026 ends)
+        const startDate = new Date('2026-02-15T00:00:00+05:30');
         
         let isWeekendsView = false;
         
@@ -703,7 +684,7 @@
         
         function calculateWeekendsRemaining() {
             const now = new Date();
-            const target = new Date('2026-02-07T09:00:00+05:30');
+            const target = new Date('2027-02-06T09:00:00+05:30');
             
             // Start from today (midnight)
             let currentDate = new Date(now);
@@ -829,7 +810,7 @@
                 <h4 class="text-white text-sm font-medium mb-1">New here? Bookmark us!</h4>
                 <p class="text-gray-400 text-xs leading-relaxed">
                     Press <span class="text-white font-mono bg-white/10 px-1 rounded">Ctrl+D</span> to save. 
-                    Targeting <span class="text-white">GATE 2027</span>? This timer auto-updates after the 2026 exam.
+                    Targeting <span class="text-white">GATE 2028</span>? This timer auto-updates after the 2027 exam.
                 </p>
             </div>
             <button onclick="closeToast()" class="text-gray-500 hover:text-white transition-colors p-1">
